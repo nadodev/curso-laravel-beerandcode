@@ -1,1 +1,1 @@
-retornando produto com slug  {{$slug}}
+essa é pagina da categoria: {{$slug}}

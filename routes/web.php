@@ -13,24 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::namespace('\App\Http\Controllers\Site')->group(function(){
-    /* rota da pagina inicial */
     Route::get('/', 'HomeController');
+    Route::get('/', 'HomeController')->name('site.home');
 
-    /* rota de produto */
     Route::get('produtos', 'CategoryController@index');
-
-    /* rota de produto/slug */
     Route::get('produtos/{slug}', 'CategoryController@show');
+    Route::get('produtos', 'CategoryController@index')->name('site.products');
+    Route::get('produtos/{slug}', 'CategoryController@show')->name('site.products.category');
 
-    /* rota de blog */
     Route::get('blog', 'BlogController');
+    Route::get('blog', 'BlogController')->name('site.blog');
 
-    /* rota de sobre  */
     Route::view('sobre', 'site.about.index');
+    Route::view('sobre', 'site.about.index')->name('site.about');
 
-    /* rota de sobre  */
     Route::get('contato', 'ContactController@index');
-    Route::post('contato', 'ContactController@contact');
+    Route::post('contato', 'ContactController@form');
+    Route::get('contato', 'ContactController@index')->name('site.contact');
+    Route::post('contato', 'ContactController@form')->name('site.contact.form');
+
 
 });
 
